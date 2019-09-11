@@ -8,8 +8,32 @@
 </head>
 <body>
     <div class='bar-container'>
+        <div class="bar" />
 
     </div>
+
+    <button onclick="fillBar(2)">Start</button>
+
+    <script>
+        function fillBar(seconds) {
+            // console.log('clicked');
+            const bar = document.querySelector('.bar');
+            let atPercent = 0;
+
+            const interval = setInterval(() => {
+                atPercent++;
+                bar.style.width = atPercent + '%';
+
+                // console.log('runnting at: ', atPercent);
+
+                if(atPercent >= 100) {
+                    clearInterval(interval);
+                }
+
+            }, (seconds * 1000) / 100)
+        }
+
+    </script>
 
     <style>
     body {
@@ -20,6 +44,11 @@
         height: 30px;
         margin: '40px';
         background-color: gray;
+    }
+    .bar {
+        background-color: green;
+        height: 100%;
+        width: 0%;
     }
     </style>
     
